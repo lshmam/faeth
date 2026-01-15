@@ -35,9 +35,14 @@ export function Navbar() {
                 <span className="text-white/70 text-[13px] font-medium tracking-tight leading-none">
                     Functional Aesthetic Design Studio
                 </span>
-                <span className="text-white/70 text-[13px] font-semibold cursor-pointer hover:text-white transition-colors flex items-center gap-1 tracking-tight leading-none">
+                <a
+                    href="https://www.linkedin.com/in/aminulishmam/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/70 text-[13px] font-semibold cursor-pointer hover:text-white transition-colors flex items-center gap-1 tracking-tight leading-none"
+                >
                     Let&apos;s talk <ArrowRight className="w-3 h-3" />
-                </span>
+                </a>
             </div>
         </motion.div>
     )

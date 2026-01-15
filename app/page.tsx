@@ -259,11 +259,14 @@ export default function Home() {
         </div>
 
         <div className="pt-20 pb-10 flex justify-center">
-          <button
+          <a
+            href="https://www.linkedin.com/in/aminulishmam/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3 rounded-full border border-current hover:bg-white hover:text-black hover:border-white transition-all duration-300"
           >
             Get in touch
-          </button>
+          </a>
         </div>
       </div>
 
