@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import { motion, useMotionValue, useAnimationFrame, useScroll, useVelocity, useSpring, useTransform, useInView } from "framer-motion"
 import { TrendingUp, Layout, Layers, Camera, ArrowUpRight } from "lucide-react"
 import PrismaticBurst from "@/components/PrismaticBurst"
+import { ParticlesBackground } from "@/components/particles-background"
 
 // --- Data Constants ---
 const cards = [
@@ -20,10 +21,9 @@ const services = [
 ]
 
 const projects = [
-  { title: "Neucler", description: "Turn conversations into conversions", image: "/neucler.png", tags: ["Product", "Web"] },
-  { title: "Jim Coach", description: "Personal trainer in your pocket", image: "/jim-coach.png", tags: ["Brand", "Product"] },
-  { title: "Neta Bridge", description: "Your ERP shouldn't slow you down", image: "/neta-bridge.png", tags: ["Website", "Interaction"] },
-  { title: "Oak Railings", description: "Cloud infrastructure reimagined", image: "/oak-railings.png", tags: ["Website", "Brand"] },
+  { title: "Neucler", description: "Turn conversations into conversions", image: "/neucler.png", tags: ["Product", "Web"], link: "https://neucler.com" },
+  { title: "Jim Coach", description: "Personal trainer in your pocket", image: "/jim-coach.png", tags: ["Brand", "Product"], link: "https://jim.coach" },
+  { title: "Neta Bridge", description: "Your ERP shouldn't slow you down", image: "/neta-bridge.png", tags: ["Website", "Interaction"], link: "https://neta-bridge.vercel.app/" },
 ]
 
 export default function Home() {
@@ -172,14 +172,21 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {projects.map((project) => (
-              <div key={project.title} className="group relative overflow-hidden rounded-xl aspect-[4/3] cursor-pointer">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={project.title}
+                className={`group relative overflow-hidden rounded-xl cursor-pointer block aspect-[4/3] ${project.title === "Neucler" ? "md:col-span-2 md:aspect-[2/1]" : ""
+                  }`}
+              >
                 {project.title === "Neucler" ? (
                   <>
                     <div className="absolute inset-0 z-0">
                       <PrismaticBurst />
                     </div>
                     <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-                      <img src="/Frame 79.png" alt="Neucler UI" className="w-[15%] h-auto object-contain" />
+                      <img src="/Frame 79.png" alt="Neucler UI" className="w-[15%] md:w-[10%] h-auto object-contain" />
                     </div>
                   </>
                 ) : project.title === "Jim Coach" ? (
@@ -188,10 +195,21 @@ export default function Home() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover object-right transition-transform duration-500 group-hover:scale-105"
                   >
                     <source src="/jim-box.mp4" type="video/mp4" />
                   </video>
+                ) : project.title === "Neta Bridge" ? (
+                  <>
+                    <div className="absolute inset-0 z-0 bg-black">
+                      <ParticlesBackground id="neta-particles" />
+                    </div>
+                    <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                      <h3 className="text-4xl text-white tracking-tight font-britanica">
+                        NetaBridge
+                      </h3>
+                    </div>
+                  </>
                 ) : (
                   <img
                     src={project.image || "/placeholder.svg"}
@@ -216,7 +234,7 @@ export default function Home() {
                   <h3 className="text-xl font-medium text-white">{project.title}</h3>
                   <p className="text-sm text-white/80 mt-1">{project.description}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -232,9 +250,9 @@ export default function Home() {
             super fun to work with!&rdquo;
           </blockquote>
           <div className="mt-10 flex flex-col items-center gap-2">
-            <div className="w-12 h-12 rounded-full bg-current/20 flex items-center justify-center">
+            {/* <div className="w-12 h-12 rounded-full bg-current/20 flex items-center justify-center">
               <span className="text-lg font-medium">CS</span>
-            </div>
+            </div> */}
             <span className="font-medium opacity-90">Charles Sol</span>
             <span className="opacity-50 text-sm">Founder of Studio.dev</span>
           </div>
@@ -252,8 +270,8 @@ export default function Home() {
       {/* 6. Footer */}
       <footer className="w-full border-t border-current/10 py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="opacity-50 text-sm">hello@faethstudio.com</span>
-          <span className="opacity-30 text-xs">©2025 Faeth Studio — All rights reserved</span>
+          <span className="opacity-50 text-sm">create@faeth.studio</span>
+          <span className="opacity-30 text-xs">©2026 Faeth Studio — All rights reserved</span>
           <span className="opacity-50 text-sm">@faethstudio</span>
         </div>
       </footer>
