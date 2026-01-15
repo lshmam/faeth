@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react"
 import { motion, useMotionValue, useAnimationFrame, useScroll, useVelocity, useSpring, useTransform, useInView } from "framer-motion"
 import { TrendingUp, Layout, Layers, Camera, ArrowUpRight } from "lucide-react"
+import PrismaticBurst from "@/components/PrismaticBurst"
 
 // --- Data Constants ---
 const cards = [
@@ -19,8 +20,8 @@ const services = [
 ]
 
 const projects = [
-  { title: "Neucler", description: "Making online growth easy for restaurants", image: "/neucler.png", tags: ["Product", "Web"] },
-  { title: "Jim Coach", description: "An ecosystem for care", image: "/jim-coach.png", tags: ["Brand", "Product"] },
+  { title: "Neucler", description: "Turn conversations into conversions", image: "/neucler.png", tags: ["Product", "Web"] },
+  { title: "Jim Coach", description: "Personal trainer in your pocket", image: "/jim-coach.png", tags: ["Brand", "Product"] },
   { title: "Neta Bridge", description: "Your ERP shouldn't slow you down", image: "/neta-bridge.png", tags: ["Website", "Interaction"] },
   { title: "Oak Railings", description: "Cloud infrastructure reimagined", image: "/oak-railings.png", tags: ["Website", "Brand"] },
 ]
@@ -172,12 +173,33 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {projects.map((project) => (
               <div key={project.title} className="group relative overflow-hidden rounded-xl aspect-[4/3] cursor-pointer">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                {project.title === "Neucler" ? (
+                  <>
+                    <div className="absolute inset-0 z-0">
+                      <PrismaticBurst />
+                    </div>
+                    <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                      <img src="/Frame 79.png" alt="Neucler UI" className="w-[15%] h-auto object-contain" />
+                    </div>
+                  </>
+                ) : project.title === "Jim Coach" ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  >
+                    <source src="/jim-box.mp4" type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity pointer-events-none" />
 
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg z-10">
                   <ArrowUpRight className="w-5 h-5" />
