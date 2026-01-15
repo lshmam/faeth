@@ -23,7 +23,7 @@ const services = [
 const projects = [
   { title: "Neucler", description: "Turn conversations into conversions", image: "/neucler.png", tags: ["Product", "Web"], link: "https://neucler.com" },
   { title: "Jim Coach", description: "Personal trainer in your pocket", image: "/jim-coach.png", tags: ["Brand", "Product"], link: "https://jim.coach" },
-  { title: "Neta Bridge", description: "Your ERP shouldn't slow you down", image: "/neta-bridge.png", tags: ["Website", "Interaction"], link: "https://neta-bridge.vercel.app/" },
+  { title: "Neta Bridge", description: "Network intelligence platform", image: "/neta-bridge.png", tags: ["Website", "Interaction"], link: "https://neta-bridge.vercel.app/" },
 ]
 
 export default function Home() {
